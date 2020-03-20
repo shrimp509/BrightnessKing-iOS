@@ -18,6 +18,9 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet weak var customTwoBtn: UIButton!
     @IBOutlet weak var customThreeBtn: UIButton!
     
+    /***********************************
+     * LifeCycle Methods
+     ***********************************/
     override func viewDidLoad() {
         super.viewDidLoad()
         self.extensionContext?
@@ -26,11 +29,14 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         print("Widget is Loaded.")
         
         // read userdefault and modify the title of custom buttons
-        customOneBtn.setTitle("自定:20%", for: UIControl.State.init())
-        customTwoBtn.setTitle("自定:40%", for: UIControl.State.init())
-        customThreeBtn.setTitle("自定:70%", for: UIControl.State.init())
-    }
+        customOneBtn.setTitle("自定:\n20%", for: UIControl.State.init())
+        customTwoBtn.setTitle("自定:\n40%", for: UIControl.State.init())
+        customThreeBtn.setTitle("自定:\n70%", for: UIControl.State.init())
         
+        // set custom btns long clickable
+        setCustomBtnLongPressGesture()
+    }
+    
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
         // Perform any setup necessary in order to update the view.
         
@@ -60,6 +66,9 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         }
     }
     
+    /***********************************
+     * Click Listeners
+     ***********************************/
     @IBAction func tappedOfOne(_ sender: UIButton) {
         adjustBrightness(0.0)
     }
@@ -84,6 +93,28 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         adjustBrightness(0.7)
     }
     
+    @objc private func cOneLongPressed(gesture: UILongPressGestureRecognizer) {
+        longPressed(gesture, Btn.FirstBtn)
+    }
+    
+    @objc private func cTwoLongPressed(gesture: UILongPressGestureRecognizer) {
+        longPressed(gesture, Btn.SecondBtn)
+    }
+    
+    @objc private func cThreeLongPressed(gesture: UILongPressGestureRecognizer) {
+        longPressed(gesture, Btn.ThirdBtn)
+    }
+    
+    private func longPressed(_ gesture: UILongPressGestureRecognizer, _ btn: Btn) {
+        if gesture.state == UIGestureRecognizer.State.began {
+            print("\(btnToInt(btn)) custom btn is long pressed.")
+            goToApp(customBtn: btn)
+        }
+    }
+    
+    /***********************************
+     * Custom Methods
+     ***********************************/
     private func adjustBrightness(_ brightness: Double) {
         // set message
         var message = "調整亮度: "
@@ -110,7 +141,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         }
     }
     
-    func showToast(message : String) {
+    private func showToast(message : String) {
         // output
         print(message)
         
@@ -133,11 +164,27 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             toastLabel.removeFromSuperview()
         })
     }
-
+    
     private func goToApp(brightness: Double) {
         let application = UIApplication.shared
         
-        let targetAppPath = "brightness://\(brightness)"
+        let targetAppPath = "brightness://adjust/\(brightness)"
+        
+        let appUrl = URL(string: targetAppPath)!
+        
+        let websiteUrl = URL(string: "http://google.com")!
+        
+        if application.canOpenURL(appUrl) {
+            application.open(appUrl, options: [:], completionHandler: nil)
+        } else {
+            application.open(websiteUrl)
+        }
+    }
+    
+    private func goToApp(customBtn: Btn) {
+        let application = UIApplication.shared
+        
+        let targetAppPath = "brightness://set/\(btnToInt(customBtn))"
         
         let appUrl = URL(string: targetAppPath)!
         
@@ -157,5 +204,38 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             self.customTwoBtn.alpha = alpha
             self.customThreeBtn.alpha = alpha
         }
+    }
+    
+    private func setCustomBtnLongPressGesture() {
+        let duration = 1.5
+        
+        let firstLongPressedRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(cOneLongPressed(gesture:)))
+        firstLongPressedRecognizer.minimumPressDuration = duration
+        customOneBtn.addGestureRecognizer(firstLongPressedRecognizer)
+        
+        let secondLongPressedRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(cTwoLongPressed(gesture:)))
+        secondLongPressedRecognizer.minimumPressDuration = duration
+        customTwoBtn.addGestureRecognizer(secondLongPressedRecognizer)
+        
+        let thirdLongPressedRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(cThreeLongPressed(gesture:)))
+        thirdLongPressedRecognizer.minimumPressDuration = duration
+        customThreeBtn.addGestureRecognizer(thirdLongPressedRecognizer)
+    }
+    
+    private func btnToInt(_ btn: Btn) -> Int{
+        switch btn {
+        case Btn.FirstBtn:
+            return 1
+        case Btn.SecondBtn:
+            return 2
+        case Btn.ThirdBtn:
+            return 3
+        }
+    }
+    
+    enum Btn {
+        case FirstBtn
+        case SecondBtn
+        case ThirdBtn
     }
 }

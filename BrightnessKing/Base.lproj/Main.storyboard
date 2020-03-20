@@ -16,6 +16,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rs_logo" translatesAutoresizingMaskIntoConstraints="NO" id="24q-Hu-3Z1">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="off_background" translatesAutoresizingMaskIntoConstraints="NO" id="acl-AO-cUr">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
@@ -25,28 +29,66 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="3Gf-Um-r9J">
-                                <rect key="frame" x="18" y="816" width="378" height="31"/>
-                                <connections>
-                                    <action selector="adjustBrightness:" destination="BYZ-38-t0r" eventType="valueChanged" id="EJQ-3M-0gO"/>
-                                </connections>
-                            </slider>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rs_logo" translatesAutoresizingMaskIntoConstraints="NO" id="24q-Hu-3Z1">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
-                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="CSQ-he-awG" userLabel="BottomView">
+                                <rect key="frame" x="20" y="732" width="374" height="100"/>
+                                <subviews>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Qg-39-M5r" userLabel="description">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="0.0"/>
+                                        <string key="text">* 自訂修改模式 *
+請調整你喜歡的亮度
+再按下確認鍵</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="現在修改的是" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5s-tm-O6w">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xCw-Mc-nHh">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="現在亮度: 40%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giD-KN-C2J">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="pvH-39-CE4">
+                                                <rect key="frame" x="0.0" y="0.0" width="70" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="9p9-yS-W0I"/>
+                                                    <constraint firstAttribute="width" constant="70" id="Cdk-SK-OlX"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <state key="normal" title="確認" backgroundImage="btn4">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="3Gf-Um-r9J">
+                                        <rect key="frame" x="-2" y="70" width="378" height="31"/>
+                                        <connections>
+                                            <action selector="adjustBrightness:" destination="BYZ-38-t0r" eventType="valueChanged" id="EJQ-3M-0gO"/>
+                                        </connections>
+                                    </slider>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="3Gf-Um-r9J" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" constant="-50" id="8at-e3-R8n"/>
                             <constraint firstItem="acl-AO-cUr" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="AHv-CT-lP9"/>
                             <constraint firstItem="acl-AO-cUr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="AbJ-c6-Izw"/>
                             <constraint firstItem="24q-Hu-3Z1" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="BIS-5n-311"/>
-                            <constraint firstItem="3Gf-Um-r9J" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="HWI-9B-Fe0"/>
+                            <constraint firstAttribute="trailing" secondItem="CSQ-he-awG" secondAttribute="trailing" constant="20" id="DEp-AP-qBb"/>
+                            <constraint firstItem="CSQ-he-awG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Fbb-Fl-ye9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="CSQ-he-awG" secondAttribute="bottom" constant="30" id="Jc8-P8-hU4"/>
                             <constraint firstItem="rSp-Uu-TtC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="Qpg-TF-lvA"/>
                             <constraint firstItem="24q-Hu-3Z1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="UQn-5N-CP1"/>
                             <constraint firstAttribute="bottom" secondItem="acl-AO-cUr" secondAttribute="bottom" id="Xqb-2d-dRR"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="3Gf-Um-r9J" secondAttribute="trailing" id="hgA-EA-XsL"/>
                             <constraint firstItem="acl-AO-cUr" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="jHG-MJ-lqx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rSp-Uu-TtC" secondAttribute="trailing" id="jKy-lb-3b5"/>
                             <constraint firstItem="rSp-Uu-TtC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lB3-i9-KaY"/>
@@ -58,7 +100,11 @@
                     <connections>
                         <outlet property="background" destination="acl-AO-cUr" id="ECs-hU-tHf"/>
                         <outlet property="brightnessSlider" destination="3Gf-Um-r9J" id="iGh-oP-whu"/>
+                        <outlet property="confirmChangeBtn" destination="pvH-39-CE4" id="QU7-vp-ZAj"/>
+                        <outlet property="indicator" destination="giD-KN-C2J" id="k9B-wB-kNM"/>
                         <outlet property="logoImg" destination="24q-Hu-3Z1" id="dSA-Gk-lUR"/>
+                        <outlet property="modifyModeDescription" destination="0Qg-39-M5r" id="uBr-K8-uDh"/>
+                        <outlet property="modifyTargetIndicator" destination="f5s-tm-O6w" id="WjZ-po-ANI"/>
                         <outlet property="titleLabel" destination="rSp-Uu-TtC" id="Tgb-TO-TEm"/>
                     </connections>
                 </viewController>
@@ -68,6 +114,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="btn4" width="102" height="102"/>
         <image name="off_background" width="720" height="1560"/>
         <image name="rs_logo" width="720" height="1560"/>
     </resources>

@@ -13,6 +13,10 @@ class ViewController: UIViewController, ViewControllerDelegate {
     @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var brightnessSlider: UISlider!
     @IBOutlet weak var logoImg: UIImageView!
+    @IBOutlet weak var indicator: UILabel!
+    @IBOutlet weak var confirmChangeBtn: UIButton!
+    @IBOutlet weak var modifyModeDescription: UILabel!
+    @IBOutlet weak var modifyTargetIndicator: UILabel!
     
     private var backgroundAnimationLock = false
     
@@ -21,15 +25,14 @@ class ViewController: UIViewController, ViewControllerDelegate {
         
         // initialize slider value with current brightness
         print("initialize slider")
-        checkThemeByBrightness()
+        updateThemeByBrightness()
 
         // fade out logo img
         animateAlphaLogoImg(show: false)
     }
     
+    // value of slider is from 0.0 to 1.0
     @IBAction func adjustBrightness(_ sender: UISlider) {
-        // value of slider is from 0.0 to 1.0
-        
         // adjust brightness
         adjust(sender.value)
     }
@@ -38,22 +41,30 @@ class ViewController: UIViewController, ViewControllerDelegate {
         adjust(brightness)
     }
     
+    func fromWidgetBackToApp(customNum: Int) {
+        print("get custom num: \(customNum)")
+        modifyModeDescription.isHidden = false
+        confirmChangeBtn.isHidden = false
+        modifyTargetIndicator.isHidden = false
+        modifyTargetIndicator.text = "-- 現在修改的是 自訂\(customNum) --"
+    }
+    
     private func adjust(_ brightness: Float) {
         // set value
         UIScreen.main.brightness = CGFloat(brightness)
         
         // animate background with brightness level
-        checkThemeByBrightness()
+        updateThemeByBrightness()
     }
     
     private func animateTheme(_ state: Bool) {
         var background = "off_background"
-        var titleColor = UIColor.white
+        var textColor = UIColor.white
         
         // check state
         if state {
             background = "on_background"
-            titleColor = UIColor.black
+            textColor = UIColor.black
         }
         
         // animate theme
@@ -63,7 +74,10 @@ class ViewController: UIViewController, ViewControllerDelegate {
                 self.backgroundAnimationLock = true
                 
                 // change title color
-                self.titleLabel.textColor = titleColor
+                self.titleLabel.textColor = textColor
+                
+                // change indicator text color
+                self.indicator.textColor = textColor
                 
                 // change background img
                 self.background.image = UIImage.init(named: background)
@@ -72,13 +86,13 @@ class ViewController: UIViewController, ViewControllerDelegate {
                 self.backgroundAnimationLock = false
                 
                 // check current brightness level and adjust animation
-                self.checkThemeByBrightness()
+                self.updateThemeByBrightness()
             })
         }
         
     }
     
-    private func checkThemeByBrightness() {
+    private func updateThemeByBrightness() {
         
         // background
         let currentBrightness = UIScreen.main.brightness
@@ -90,6 +104,9 @@ class ViewController: UIViewController, ViewControllerDelegate {
         
         // slider
         brightnessSlider.setValue(Float(currentBrightness), animated: true)
+        
+        // indicator
+        indicator.text = String(format: "現在亮度: %.0f %%", currentBrightness * 100)
     }
     
     private func animateAlphaLogoImg(show: Bool) {

@@ -22,15 +22,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         print("url: \(url)")
         
-        let urlString = url.absoluteString
-        let index = urlString.index(urlString.startIndex, offsetBy: 13)
-        let para = String(urlString[index...])
-        print("get brightness: \(para)")
+        let result = resolveUrl(url)
         
-        // force to access method in ViewController
-        (window?.rootViewController as? ViewController)?.fromWidgetBackToApp(brightness: Float(para)!)
+        if result.intent == "adjust" {
+            // force to access method in ViewController
+            (window?.rootViewController as? ViewController)?.fromWidgetBackToApp(brightness: Float(result.value)!)
+        } else if result.intent == "set" {
+            // force to access method in ViewController
+            (window?.rootViewController as? ViewController)?.fromWidgetBackToApp(customNum: Int(result.value)!)
+        }
         
         return false
+    }
+    
+    private func resolveUrl(_ url: URL) -> (intent: String, value: String){
+        
+        let urlString = url.absoluteString
+        
+        // default(set)
+        var intent = "set"
+        var index = urlString.index(urlString.startIndex, offsetBy: 17)
+        
+        // if adjust
+        if urlString.contains("adjust") {
+            intent = "adjust"
+            index = urlString.index(urlString.startIndex, offsetBy: 20)
+        }
+        
+        // get value
+        let para = String(urlString[index...])
+        
+        return (intent, para)
     }
 }
 
