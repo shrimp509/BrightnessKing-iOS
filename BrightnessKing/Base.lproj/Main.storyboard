@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="不完美的亮度王" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="off_background" translatesAutoresizingMaskIntoConstraints="NO" id="acl-AO-cUr">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="不完美的亮度王" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSp-Uu-TtC">
+                                <rect key="frame" x="0.0" y="94" width="414" height="48"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="3Gf-Um-r9J">
+                                <rect key="frame" x="18" y="816" width="378" height="31"/>
+                                <connections>
+                                    <action selector="adjustBrightness:" destination="BYZ-38-t0r" eventType="valueChanged" id="EJQ-3M-0gO"/>
+                                </connections>
+                            </slider>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rs_logo" translatesAutoresizingMaskIntoConstraints="NO" id="24q-Hu-3Z1">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="3Gf-Um-r9J" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" constant="-50" id="8at-e3-R8n"/>
+                            <constraint firstItem="acl-AO-cUr" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="AHv-CT-lP9"/>
+                            <constraint firstItem="acl-AO-cUr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="AbJ-c6-Izw"/>
+                            <constraint firstItem="24q-Hu-3Z1" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="BIS-5n-311"/>
+                            <constraint firstItem="3Gf-Um-r9J" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="HWI-9B-Fe0"/>
+                            <constraint firstItem="rSp-Uu-TtC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="Qpg-TF-lvA"/>
+                            <constraint firstItem="24q-Hu-3Z1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="UQn-5N-CP1"/>
+                            <constraint firstAttribute="bottom" secondItem="acl-AO-cUr" secondAttribute="bottom" id="Xqb-2d-dRR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3Gf-Um-r9J" secondAttribute="trailing" id="hgA-EA-XsL"/>
+                            <constraint firstItem="acl-AO-cUr" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="jHG-MJ-lqx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rSp-Uu-TtC" secondAttribute="trailing" id="jKy-lb-3b5"/>
+                            <constraint firstItem="rSp-Uu-TtC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lB3-i9-KaY"/>
+                            <constraint firstAttribute="bottom" secondItem="24q-Hu-3Z1" secondAttribute="bottom" id="ry3-ZU-vOg"/>
+                            <constraint firstAttribute="trailing" secondItem="24q-Hu-3Z1" secondAttribute="trailing" id="wVl-Zd-lZ6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="background" destination="acl-AO-cUr" id="ECs-hU-tHf"/>
+                        <outlet property="brightnessSlider" destination="3Gf-Um-r9J" id="iGh-oP-whu"/>
+                        <outlet property="logoImg" destination="24q-Hu-3Z1" id="dSA-Gk-lUR"/>
+                        <outlet property="titleLabel" destination="rSp-Uu-TtC" id="Tgb-TO-TEm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="off_background" width="720" height="1560"/>
+        <image name="rs_logo" width="720" height="1560"/>
+    </resources>
+</document>

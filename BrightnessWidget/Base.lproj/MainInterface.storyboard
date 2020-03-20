@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="M4Y-Lb-cyx">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Today View Controller-->
+        <scene sceneID="cwh-vc-ff4">
+            <objects>
+                <viewController id="M4Y-Lb-cyx" customClass="TodayViewController" customModule="來調亮度唷" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="center" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Qjz-pm-GYy">
+                                <rect key="frame" x="0.0" y="5" width="320" height="110"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p0A-xG-RSX">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="110"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="最暗" backgroundImage="btn1">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tappedOfOne:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="eh3-N5-Plj"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XuQ-1w-9gW">
+                                        <rect key="frame" x="110" y="0.0" width="100" height="110"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="普通" backgroundImage="btn2">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tappedOfTwo:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="hWI-La-JZM"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lzp-tg-wWN">
+                                        <rect key="frame" x="220" y="0.0" width="100" height="110"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="最亮" backgroundImage="btn6">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tappedOfThree:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="Vm9-td-lsD"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="g6V-F0-608"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9aS-bw-WhR">
+                                <rect key="frame" x="0.0" y="135" width="320" height="110"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ok1-xh-3dm">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="110"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="自定1" backgroundImage="btn6">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tappedOfCusOne:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="A66-pu-3zS"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEL-QP-DOg">
+                                        <rect key="frame" x="110" y="0.0" width="100" height="110"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="自定2" backgroundImage="btn5">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tappedOfCusTwo:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="8cM-CU-Zf6"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L0K-Nj-6H5">
+                                        <rect key="frame" x="220" y="0.0" width="100" height="110"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="自定3" backgroundImage="btn4">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tappedOfCusThree:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="jmF-sB-eWY"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="j5S-6B-g1s"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Qjz-pm-GYy" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" id="2B1-UZ-mRb"/>
+                            <constraint firstItem="9aS-bw-WhR" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" id="Aqj-e4-gmR"/>
+                            <constraint firstItem="Qjz-pm-GYy" firstAttribute="top" secondItem="S3S-Oj-5AN" secondAttribute="top" constant="5" id="Kni-xz-6Rz"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="trailing" secondItem="9aS-bw-WhR" secondAttribute="trailing" id="Tkl-8b-LuN"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="trailing" secondItem="Qjz-pm-GYy" secondAttribute="trailing" id="m94-UE-wAl"/>
+                            <constraint firstItem="9aS-bw-WhR" firstAttribute="top" secondItem="Qjz-pm-GYy" secondAttribute="bottom" constant="20" id="tws-fv-jNs"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ssy-KU-ocm"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="300"/>
+                    <connections>
+                        <outlet property="customOneBtn" destination="Ok1-xh-3dm" id="FcL-UQ-Fhh"/>
+                        <outlet property="customThreeBtn" destination="L0K-Nj-6H5" id="pWw-2o-hgx"/>
+                        <outlet property="customTwoBtn" destination="dEL-QP-DOg" id="RZ6-Hc-ZWq"/>
+                        <outlet property="levelOneBtn" destination="p0A-xG-RSX" id="5yQ-dY-P19"/>
+                        <outlet property="levelThreeBtn" destination="Lzp-tg-wWN" id="vWF-rY-hqx"/>
+                        <outlet property="levelTwoBtn" destination="Lzp-tg-wWN" id="e3y-Nt-q7z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="133" y="139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="btn1" width="102" height="102"/>
+        <image name="btn2" width="102" height="102"/>
+        <image name="btn4" width="102" height="102"/>
+        <image name="btn5" width="102" height="102"/>
+        <image name="btn6" width="102" height="102"/>
+    </resources>
+</document>
