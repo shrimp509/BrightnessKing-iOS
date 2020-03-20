@@ -35,6 +35,9 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         // set custom btns long clickable
         setCustomBtnLongPressGesture()
+        
+        // get value from user default and update widget UI
+        updateCustomBtnUI()
     }
     
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
@@ -130,39 +133,12 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             message += "未知"
         }
         
-        // show message
-        showToast(message: "\(message)")
-        
         // adjust brightness
         if (0.0...1.0).contains(brightness) {
             goToApp(brightness: brightness)
         } else {
             print("illegal brightness value")
         }
-    }
-    
-    private func showToast(message : String) {
-        // output
-        print(message)
-        
-        // show toast label
-        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-50, width: 150, height: 35))
-        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        toastLabel.textColor = UIColor.white
-        toastLabel.textAlignment = .center;
-        toastLabel.font = UIFont(name: "Montserrat-Light", size: 12.0)
-        toastLabel.text = message
-        toastLabel.alpha = 1.0
-        toastLabel.layer.cornerRadius = 10;
-        toastLabel.clipsToBounds  =  true
-        self.view.addSubview(toastLabel)
-        
-        // animate it
-        UIView.animate(withDuration: 4.0, delay: 0.1, options: .curveEaseOut, animations: {
-            toastLabel.alpha = 0.0
-        }, completion: {(isCompleted) in
-            toastLabel.removeFromSuperview()
-        })
     }
     
     private func goToApp(brightness: Double) {
@@ -231,6 +207,16 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         case Btn.ThirdBtn:
             return 3
         }
+    }
+    
+    private func updateCustomBtnUI() {
+        let userDefault = UserDefaults(suiteName: "group.net.rongson.BrightnessKing")!
+        let firstValue = userDefault.value(forKey: "custom1")!
+        print("get value: \(firstValue)")
+        
+        //TODO: set widget button text with user default values
+        
+//        customOneBtn.setTitle("自訂1\n\(firstValue)", for: UIControl.State())
     }
     
     enum Btn {

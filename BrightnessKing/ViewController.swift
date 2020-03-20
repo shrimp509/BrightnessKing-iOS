@@ -20,6 +20,9 @@ class ViewController: UIViewController, ViewControllerDelegate {
     
     private var backgroundAnimationLock = false
     
+    /*********************************
+     * LifeCycle Methods
+     *********************************/
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,12 +34,34 @@ class ViewController: UIViewController, ViewControllerDelegate {
         animateAlphaLogoImg(show: false)
     }
     
+    /*********************************
+     * Click Listeners
+     *********************************/
     // value of slider is from 0.0 to 1.0
     @IBAction func adjustBrightness(_ sender: UISlider) {
         // adjust brightness
         adjust(sender.value)
     }
     
+    @IBAction func changeUserDefault(_ sender: UIButton) {
+        let userDefault = UserDefaults(suiteName: "group.net.rongson.BrightnessKing")!
+        
+        // get target num, WARNING: may crash
+        let rawString = modifyTargetIndicator.text!
+        let firstIndex = rawString.index(rawString.startIndex, offsetBy: 12)
+        let secondIndex = rawString.index(rawString.startIndex, offsetBy: 12)
+        let key = "\(rawString[firstIndex...secondIndex])"
+        
+        // set to user default
+        let value = String(format: "%.0f", UIScreen.main.brightness * 100)
+        print("set user default, key: custom\(key), value: \(value))")
+        userDefault.set(Int(value), forKey: "custom\(key)")
+    }
+
+    
+    /*********************************
+     * Public Methods
+     *********************************/
     func fromWidgetBackToApp(brightness: Float) {
         adjust(brightness)
     }
@@ -49,6 +74,9 @@ class ViewController: UIViewController, ViewControllerDelegate {
         modifyTargetIndicator.text = "-- 現在修改的是 自訂\(customNum) --"
     }
     
+    /*********************************
+     * Private Custom Methods
+     *********************************/
     private func adjust(_ brightness: Float) {
         // set value
         UIScreen.main.brightness = CGFloat(brightness)
