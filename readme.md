@@ -4,6 +4,7 @@ The concept of this app is from [Android version Imperfect Brightness King](http
 
 # How-to-use
 video: https://youtu.be/ESF6qI0jung
+
 [![video-cover](https://github.com/shrimp509/BrightnessKing-iOS/blob/master/screenshots/video-cover.jpg)](https://youtu.be/ESF6qI0jung)
 
 # History
