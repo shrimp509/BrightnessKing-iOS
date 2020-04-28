@@ -2,6 +2,9 @@
 An ios app which can adjust screen brightness with button in the Widget.
 The concept of this app is from [Android version Imperfect Brightness King](https://github.com/shrimp509/BrightnessKing) which is also open source.
 
+# Screenshots
+![](https://github.com/shrimp509/BrightnessKing-iOS/blob/master/screenshots/first.png) | ![](https://github.com/shrimp509/BrightnessKing-iOS/blob/master/screenshots/second.png) | ![](https://github.com/shrimp509/BrightnessKing-iOS/blob/master/screenshots/third.png)
+
 # How-to-use
 video: https://youtu.be/ESF6qI0jung
 
